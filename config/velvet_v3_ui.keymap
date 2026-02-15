@@ -28,6 +28,20 @@
             bindings = <&kp LS(T) &kp E &kp S &kp T>;
             label = "VYPOLNENO";
         };
+
+        switch_forward: switch_forward {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LEFT_WIN &kp PAGE_DOWN>;
+            label = "SWITCH_FORWARD";
+        };
+
+        switch_back: switch_back {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LEFT_WIN &kp PAGE_UP>;
+            label = "SWITCH_BACK";
+        };
     };
 
     keymap {
@@ -46,10 +60,10 @@
 
         nav {
             bindings = <
-&trans  &kp N1  &kp N2    &kp N3   &kp N4   &kp N5                     &kp N6    &kp N7        &kp N8         &kp N9         &kp N0         &trans
-&trans  &test   &trans    &trans   &trans   &kp RET                    &trans    &kp LEFT      &kp DOWN       &kp UP         &kp RIGHT      &trans
-&trans  &trans  &kp HOME  &kp INS  &kp END  &kp DEL                    &kp CLCK  &kp LC(LEFT)  &kp PAGE_DOWN  &kp PAGE_UP    &kp LC(RIGHT)  &trans
-                &trans    &trans   &trans   &trans   &trans    &trans  &mo 3     &trans        &kp PAGE_UP    &kp PAGE_DOWN
+&trans  &kp N1  &kp N2    &kp N3        &kp N4           &kp N5                     &kp N6    &kp N7        &kp N8         &kp N9         &kp N0         &trans
+&trans  &test   &trans    &switch_back  &switch_forward  &kp RET                    &trans    &kp LEFT      &kp DOWN       &kp UP         &kp RIGHT      &trans
+&trans  &trans  &kp HOME  &kp INS       &kp END          &kp DEL                    &kp CLCK  &kp LC(LEFT)  &kp PAGE_DOWN  &kp PAGE_UP    &kp LC(RIGHT)  &trans
+                &trans    &trans        &trans           &trans   &trans    &trans  &mo 3     &trans        &kp PAGE_UP    &kp PAGE_DOWN
             >;
 
             display-name = "Navigation";
